@@ -1,0 +1,109 @@
+.packages h2 {
+    font-size: 3.1rem;
+    color: black;
+    margin-bottom: 1.3rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.packages {
+    padding: 94px;
+    /* Add some padding around the entire section */
+    text-align: center;
+    /* Center the heading if you like */
+    margin-top: -4%;
+}
+
+.package-grid-container {
+    display: grid;
+    /* This is the main declaration for CSS Grid */
+    /* Define your columns. auto-fit combined with minmax is great for responsiveness. */
+    /* It tries to fit as many 300px columns as possible, but not smaller than 250px. */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 94px;
+    /* Space between grid items (images) */
+    max-width: 1300px;
+    /* Optional: Limit the max width of your grid for better readability on large screens */
+    margin: 0 auto;
+    /* Center the grid container within the .packages section */
+    padding: 10px;
+    /* Optional: Padding inside the grid container */
+}
+
+.package-grid-container img {
+    width: 100%;
+    /* Make images fill their grid cell */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional: Subtle shadow for depth */
+    transition: transform 0.3s ease;
+    /* Optional: Smooth hover effect */
+}
+
+.package-grid-container img:hover {
+    transform: translateY(-5px);
+    /* Optional: Lift effect on hover */
+}
+
+
+/* --- Package Slider Enhancements --- */
+
+
+/* Container for the entire slider section */
+
+.packages {
+    overflow: hidden;
+    /* This is CRUCIAL to hide the images outside the visible area, creating the slider effect */
+    padding: 20px;
+    /* Optional: Adds some space around the slider section */
+    /* If you want the slider to stretch full width, ensure no max-width is restricting it here or on its parents */
+}
+
+
+/* The visible window/viewport for the slider */
+
+.package-slider {
+    width: 100%;
+    /* Ensures the slider takes the full width of its parent (.packages) */
+}
+
+
+/* The actual element that slides, containing all the images */
+
+.slider-wrapper {
+    display: flex;
+    /* Arranges the images horizontally in a single line */
+    width: fit-content;
+    /* This makes the wrapper exactly as wide as the sum of all its children (images + margins) */
+    /* ***** THIS IS THE MISSING PIECE TO APPLY THE ANIMATION ***** */
+    /* We will apply the animation here. The duration will be set by JavaScript for precision. */
+    /* Placeholder for initial setup, JavaScript will override animation-duration and --slide-distance */
+    animation: infiniteSlide linear infinite;
+    /* Apply the keyframes here */
+}
+
+
+/* Styles for individual images within the slider */
+
+.slider-wrapper img {
+    width: 30%;
+    /* IMPORTANT: Set a fixed width for consistent image display and accurate animation calculation */
+    margin-right: 20px;
+    /* Space between each image */
+    flex-shrink: 0;
+    /* Prevents images from shrinking if there's not enough space in the flex container */
+    object-fit: cover;
+    /* Ensures the image covers its box, cropping if necessary, without distortion */
+}
+
+@media(max-width:480px) {
+    .packages {
+        margin-top: -3rem;
+    }
+    .packages h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .contact-us h2 {
+        margin-top: -5rem;
+    }
+}

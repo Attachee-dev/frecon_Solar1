@@ -1,0 +1,220 @@
+/* Page-specific styles for the About Us page */
+
+
+/* Adjust the distance of the main content from the header */
+
+main {
+    margin-top: -7.5rem;
+    /* This value should be fine-tuned to your header's height and desired spacing */
+    padding-top: 2.5rem;
+}
+
+
+/* About Hero Section */
+
+.about-hero {
+    background-color: #1a1332;
+    padding: 0rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    /* Allows wrapping on smaller screens */
+}
+
+.about-hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 1rem;
+}
+
+.about-hero-content p {
+    max-width: 700px;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.about-hero img {
+    max-width: 400px;
+    width: 100%;
+    /* Ensures it scales down on small screens */
+    border-radius: 10px;
+}
+
+
+/* Vision, Mission, Values Section */
+
+
+/* Overlay Utility for Background Fade */
+
+.overlay-container {
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+
+.overlay-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    z-index: 1;
+}
+
+.overlay-content {
+    position: relative;
+    z-index: 2;
+}
+
+.vision-mission-values-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vision-column {
+    flex: 1;
+    /* Takes equal space */
+    background: url('../images/about-us/pexels-kindelmedia-9875680.jpg') no-repeat center/cover;
+    padding: 3rem;
+}
+
+.vision-column h3.objectives-heading {
+    margin-top: 2rem;
+}
+
+.vision-column ul.objectives-list {
+    list-style: none;
+    /* Remove default bullet points */
+    padding-left: 1rem;
+}
+
+
+/* Style for the Unicode arrow within list items */
+
+.objectives-list li::before {
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+.mission-values-column {
+    flex: 1;
+    /* Takes equal space */
+    background: url('../images/about-us/WhatsApp-Image-2021-11-19-at-9.56.31-AM-1-1-1.jpeg') no-repeat center/cover;
+    padding: 3rem;
+}
+
+.mission-values-column h2.core-values-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.mission-values-column ul.core-values-list {
+    padding-left: 1rem;
+    font-size: 1rem;
+}
+
+.mission-values-column h2.mission-heading {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+
+/* Who We Are Section */
+
+.Who-we-are-section {
+    padding: 0rem 2rem;
+    background: white;
+}
+
+.Who-we-are-section h2.Who-we-are-heading {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: black;
+}
+
+.who-we-are-section p {
+    font-size: 1.2rem;
+    color: black;
+}
+
+
+/* Values Section */
+
+.values-section {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.values-section h2.values-heading {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: black;
+}
+
+.values-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.values-list-container ul.values-list-col {
+    flex: 1;
+    /* Each ul takes equal space */
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.values-list-col li::before {
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+
+/* Responsive Adjustments for about-us.css */
+
+@media (max-width: 768px) {
+    .about-hero,
+    .vision-mission-values-section,
+    .values-list-container {
+        flex-direction: column;
+        /* Stack columns vertically on smaller screens */
+    }
+    .about-hero-content,
+    .vision-column,
+    .mission-values-column,
+    .values-list-container ul {
+        flex: none;
+        /* Remove flex sizing */
+        width: 100%;
+        /* Take full width */
+    }
+    .about-hero-content h1 {
+        font-size: 2.5rem;
+        /* Adjust heading size */
+    }
+    .about-hero-content p {
+        font-size: 1rem;
+        /* Adjust paragraph size */
+    }
+    .vision-column,
+    .mission-values-column {
+        padding: 2rem;
+        /* Adjust padding for smaller screens */
+    }
+    /* Ensure backgrounds cover properly on smaller screens */
+    .vision-column,
+    .mission-values-column {
+        background-size: cover;
+    }
+}

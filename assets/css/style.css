@@ -1,0 +1,1397 @@
+    /*---------------------------------------------------------------------------HOME PAGE STYLES---------------------------------------------------------------------------*/
+    
+     :root {
+        --primary-dark: #0d0b1e;
+        --primary-deep: #1a1332;
+        --accent-glow: #7f5af0;
+        --accent-mist: #4bc0c8;
+        --accent-pink: #fcebeb;
+        --bg-light: #f8f9fd;
+        --text-light: #fefefe;
+        --text-muted: #b2b8c2;
+        --new-accent-color: #e6880c;
+        /* New variable for the requested orange color */
+    }
+    /* Universal Reset */
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: white;
+        color: black;
+        line-height: 1.6;
+        font-size: 16px;
+        /* Adjusted to a common base size */
+    }
+    
+    header {
+        background-color: white;
+        padding-bottom: 1rem;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* This centers items vertically based on their collective height */
+        padding: 0.5rem 2rem;
+        /* Adjusted: Further reduced top/bottom padding to compact the header */
+    }
+    
+    .logo img {
+        max-height: 90px;
+        width: auto;
+        padding: 15px;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 3.1rem;
+        list-style: none;
+        padding: 0.8rem 1.5rem;
+        margin-left: auto;
+        /* Pushes nav-links to the far right */
+        margin-top: -65px;
+        /* Keep only the negative top margin if needed */
+    }
+    
+    .nav-links li a {
+        color: rgb(0, 0, 0);
+        /* Changed text color to white for better contrast on purple background */
+        text-decoration: none;
+        font-weight: 600;
+        position: relative;
+        transition: all 0.3s ease;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4rem;
+    }
+    
+    .nav-links li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #e6880c;
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s ease;
+    }
+    
+    .nav-links li a:hover::after {
+        width: 100%;
+    }
+    /* Dropdown Styling */
+    
+    .nav-links .dropdown {
+        position: relative;
+    }
+    
+    .nav-links .dropdown-menu {
+        display: none;
+        position: absolute;
+        padding: 1rem;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        min-width: 100px;
+        border-radius: 0.5rem;
+        background-color: var(--primary-dark);
+    }
+    
+    .nav-links .dropdown-menu li {
+        margin: 0.5rem 0;
+    }
+    
+    .nav-links .dropdown-menu li a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem;
+        display: block;
+        border-radius: 0.3rem;
+        transition: width 0.3s ease;
+        font-size: 0.8rem;
+        list-style-type: none;
+    }
+    
+    .nav-links .dropdown-menu,
+    .nav-links .dropdown-menu li {
+        list-style: none;
+    }
+    /* Show dropdown on hover */
+    
+    .nav-links .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    /* --- Image Slider (Header Slider) Enhancements --- */
+    
+    .slider-container {
+        overflow: hidden;
+        height: 87vh;
+        position: relative;
+        margin: -5rem 0rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeInDown 1s ease-out;
+    }
+    
+    .slider-inner {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform;
+        position: relative;
+    }
+    
+    .slider-inner img {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    /* Slider Dots Styling */
+    
+    .slider-dots-container {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
+    
+    .dot {
+        width: 12px;
+        height: 12px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    
+    .dot.active {
+        background-color: var(--new-accent-color);
+        transform: scale(1.2);
+        border-color: var(--new-accent-color);
+    }
+    /* @keyframes imageFade is now only used if you have other elements relying on it.
+   It's generally removed for the main slider as JS handles transforms. */
+    
+    @keyframes imageFade {
+        0% {
+            opacity: 0;
+        }
+        8% {
+            opacity: 1;
+        }
+        25% {
+            opacity: 1;
+        }
+        33% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    /* --- Image Slider (Header Slider) Enhancements - End --- */
+    
+    main {
+        background-color: white;
+    }
+    /* --- Welcome Section (Text and Image side-by-side - Magazine Layout) --- */
+    
+    .welcome {
+        text-align: justify;
+        margin-bottom: 5rem;
+        background-color: white;
+        font-size: 19.2px;
+    }
+    
+    .packages {
+        text-align: center;
+        margin: 0;
+        animation: fadeInUp 1s ease-in-out;
+        overflow: hidden;
+        /* This is CRUCIAL to hide the images outside the visible area, creating the slider effect */
+        padding: 20px;
+        padding-bottom: 5%;
+        /* Optional: Adds some space around the slider section */
+        /* If you want the slider to stretch full width, ensure no max-width is restricting it here or on its parents */
+    }
+    
+    .packages h2 {
+        font-size: 3.1rem;
+        color: white;
+        margin-bottom: 1.3rem;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+    /*Paralax scrolling section*/
+    
+    .parallax {
+        background-image: url('../images/paralax.png');
+        background-attachment: fixed;
+        background-position: center;
+        height: 100%;
+        background-size: cover;
+        margin: -3rem -1rem 0rem;
+    }
+    /* Contact Us Styles */
+    /* --- Package Slider Enhancements --- */
+    /* Container for the entire slider section */
+    
+    .package-slider {
+        width: 100%;
+        /* Ensures the slider takes the full width of its parent (.packages) */
+    }
+    /* The actual element that slides, containing all the images */
+    
+    .slider-wrapper {
+        display: flex;
+        /* Arranges the images horizontally in a single line */
+        width: fit-content;
+        /* This makes the wrapper exactly as wide as the sum of all its children (images + margins) */
+        /* ***** THIS IS THE MISSING PIECE TO APPLY THE ANIMATION ***** */
+        /* We will apply the animation here. The duration will be set by JavaScript for precision. */
+        /* Placeholder for initial setup, JavaScript will override animation-duration and --slide-distance */
+        animation: infiniteSlide linear infinite;
+        /* Apply the keyframes here */
+    }
+    /* Styles for individual images within the slider */
+    
+    .slider-wrapper img {
+        width: 18%;
+        /* IMPORTANT: Set a fixed width for consistent image display and accurate animation calculation */
+        margin-right: 20px;
+        /* Space between each image */
+        flex-shrink: 0;
+        /* Prevents images from shrinking if there's not enough space in the flex container */
+        object-fit: cover;
+        /* Ensures the image covers its box, cropping if necessary, without distortion */
+    }
+    /* Keyframes for the continuous horizontal slide animation */
+    
+    @keyframes infiniteSlide {
+        0% {
+            transform: translateX(0);
+            /* Start position: no horizontal translation */
+        }
+        100% {
+            /* End position: translate to the left by the exact total width of ONE set of original images.
+           This value will be dynamically set by JavaScript using a CSS custom property.
+        */
+            transform: translateX(var(--slide-distance));
+        }
+    }
+    /* --- Organized Branches Content --- */
+    /*-----------------------------------------------------------------------------------------Cars container that are just after the slider wraper----------------------------------------*/
+    
+    .products h2 {
+        font-size: 3.1rem;
+        color: white;
+        margin-bottom: 1.3rem;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .cards-container {
+        display: grid;
+        /* Change from flex to grid */
+        grid-template-columns: repeat(3, 1fr);
+        /* Creates 3 equal columns */
+        gap: 30px;
+        /* Space between cards, adjust as needed */
+        max-width: 1200px;
+        /* Max width for the grid to keep cards from spreading too wide */
+        width: 100%;
+        /* Ensure it takes full width up to max-width */
+        padding: 20px;
+        /* Add some padding around the grid */
+        box-sizing: border-box;
+        /* Include padding in width calculation */
+        color: #fff;
+        /* Ensure body takes full viewport height for centering */
+        justify-content: center;
+        /* For horizontal centering of container */
+        align-items: center;
+        /* For vertical centering of container */
+        margin: 0 auto;
+    }
+    /* --- Card Styling (Keep existing or apply as before) --- */
+    
+    .card {
+        border-radius: 15px;
+        padding: 30px;
+        /* Remove fixed width here, as grid handles sizing */
+        /* width: 280px;  <-- REMOVE OR COMMENT OUT THIS LINE */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* Pushes content and buttons to ends */
+        transition: transform 0.3s ease;
+        /* Smooth hover effect */
+        text-align: left;
+        /* Adjust text alignment if needed */
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        /* Lift card slightly on hover */
+    }
+    
+    .card h3 {
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #eee;
+    }
+    
+    .card p {
+        font-size: 0.95em;
+        line-height: 1.6;
+        color: white;
+        margin-bottom: 25px;
+        /* Space before buttons */
+        flex-grow: 1;
+        /* Allows paragraph to take available space */
+    }
+    
+    .button-group {
+        display: flex;
+        gap: 10px;
+        /* Space between buttons */
+        margin-top: auto;
+        /* Pushes buttons to the bottom of the card */
+        justify-content: center;
+        /* Center buttons within their group */
+    }
+    
+    .button {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9em;
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        flex-grow: 1;
+        /* Allows buttons to share space and stretch */
+        white-space: nowrap;
+        /* Prevent text wrap on buttons */
+    }
+    
+    .whatsapp-button1 {
+        background-color: #25D366;
+        /* WhatsApp green */
+        color: #fff;
+        border-radius: 10%;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 0.9em;
+        text-align: center;
+        flex-grow: 1;
+        text-decoration: none;
+    }
+    
+    .whatsapp-button1:hover {
+        background-color: #1DA851;
+    }
+    
+    .internal-button {
+        background-color: #663399;
+        /* Example internal button color (purple) */
+        color: #fff;
+    }
+    
+    .internal-button:hover {
+        background-color: #4a2273;
+    }
+    /* --- Responsive Adjustments --- */
+    
+    @media (max-width: 992px) {
+        /* For tablets and smaller laptops */
+        .cards-container {
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 columns */
+            gap: 25px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        /* For larger phones and smaller tablets */
+        .cards-container {
+            grid-template-columns: 1fr;
+            /* 1 column */
+            gap: 20px;
+            padding: 15px;
+        }
+        .card {
+            max-width: 400px;
+            /* Keep cards from getting too wide on single column */
+            margin: 0 auto;
+            /* Center single cards */
+        }
+    }
+    
+    @media (max-width: 480px) {
+        /* For smaller phones */
+        .cards-container {
+            padding: 10px;
+        }
+        .card {
+            padding: 20px;
+        }
+        .button-group {
+            flex-direction: column;
+            /* Stack buttons vertically on very small screens */
+        }
+        .button {
+            padding: 10px 15px;
+        }
+    }
+    
+    .branches {
+        margin: 4rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .branches h2 {
+        font-size: 3.1rem;
+        color: black;
+        margin-bottom: 1.3rem;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .branches-content {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 2.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: start;
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
+    
+    .branches-info {
+        background: none;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        color: black;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .branches-info h3 {
+        color: var(--accent-glow);
+        font-size: 1.65rem;
+        margin-bottom: 1.2rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .branches-info th,
+    .branches-info td {
+        text-align: left;
+        font-size: 1.1rem;
+        line-height: 1.4;
+        color: black;
+        padding: 0.5em 0.5em 0.5em 0;
+        vertical-align: top;
+        transition: color 0.2s, transform 0.2s;
+    }
+    
+    .branches-info th {
+        font-weight: bold;
+        white-space: nowrap;
+        padding-bottom: 0.7em;
+        color: var(--accent-glow);
+        font-size: 1.05em;
+    }
+    
+    .branches-info td.branch-city {
+        font-weight: bold;
+        white-space: nowrap;
+        padding-right: 1.5em;
+        position: relative;
+    }
+    
+    .branches-info td.branch-city::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background: url('../../assets/images/contacts/location.png') no-repeat center center;
+        background-size: contain;
+        filter: sepia(100%) hue-rotate(0deg) saturate(300%) brightness(100%) contrast(100%);
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    
+    .branches-info td.branch-address {
+        padding-left: 0.2em;
+    }
+    
+    .branches-map {
+        background: none;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .branches-map iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 400px;
+        border: 0;
+        border-radius: 8px;
+    }
+    
+    .contact-us {
+        text-align: left;
+        margin: 4rem 0;
+        padding: 2rem;
+        background-color: white;
+    }
+    
+    .contact-us h2 {
+        font-size: 3.1rem;
+        color: black;
+        margin-bottom: 1.3rem;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .contact-info-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        padding-left: 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .contact-item,
+    .facebook-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1rem;
+        color: black;
+        justify-content: flex-start;
+    }
+    
+    .contact-item img,
+    .facebook-item img {
+        width: 24px;
+        height: 24px;
+        filter: sepia(100%) hue-rotate(0deg) saturate(300%) brightness(100%) contrast(100%);
+    }
+    
+    .contact-item a,
+    .contact-item p,
+    .facebook-item a {
+        color: black;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .contact-item a:hover,
+    .facebook-item a:hover {
+        color: #e6880c;
+        text-decoration: underline;
+    }
+    
+    footer {
+        background-color: var(--primary-deep);
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .footer-background {
+        display: none;
+    }
+    
+    footer p {
+        color: white;
+        margin: 0;
+        font-size: 16px;
+    }
+    
+    footer p .footer-company-name {
+        color: var(--new-accent-color);
+    }
+    /* Animations */
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .scroll-indicator-btn {
+        position: fixed;
+        /* Stays in place relative to the viewport */
+        bottom: 30px;
+        /* Initial position from the bottom edge */
+        right: 30px;
+        /* Initial position from the right edge */
+        width: 50px;
+        /* Size of the button */
+        height: 50px;
+        background-color: rgba(72, 24, 120, 0.7);
+        /* Dark purple from your theme with transparency */
+        color: white;
+        /* Color of the arrow */
+        border: none;
+        border-radius: 50%;
+        /* Make it round */
+        cursor: pointer;
+        font-size: 24px;
+        /* Size of the arrow character */
+        display: flex;
+        /* Use flexbox to center the arrow inside */
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* Subtle shadow for depth */
+        transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
+        /* Smooth transitions for hover and visibility */
+        opacity: 0;
+        /* Hidden by default when at the very top of the page */
+        pointer-events: none;
+        /* Prevents clicks when the button is hidden */
+        z-index: 1000;
+        /* Ensure it's on top of other content */
+    }
+    /* Default state: arrow pointing down */
+    
+    .scroll-indicator-btn::after {
+        content: '\2193';
+        /* Unicode character for a downward arrow (↓) */
+    }
+    /* Class to make the button visible */
+    
+    .scroll-indicator-btn.show {
+        opacity: 1;
+        pointer-events: auto;
+        /* Enable clicks when visible */
+    }
+    /* Class to change the arrow direction to up (when at the bottom of the page) */
+    
+    .scroll-indicator-btn.up::after {
+        content: '\2191';
+        /* Unicode character for an upward arrow (↑) */
+    }
+    /* Hover effect: change background color and slightly scale */
+    
+    .scroll-indicator-btn:hover {
+        background-color: var(--new-accent-color);
+        /* Orange color on hover, defined in your :root variables */
+        transform: scale(1.1);
+        /* Slightly enlarge the button on hover */
+    }
+    /* --- Scroll Indicator Button Styles - End --- */
+    /* --- WhatsApp Floating Button Styles - Start --- */
+    
+    .whatsapp-fab {
+        position: fixed;
+        bottom: 30px;
+        /* Align with scroll indicator button */
+        left: 30px;
+        /* Position on the left side */
+        width: 50px;
+        height: 50px;
+        background-color: #25D366;
+        /* WhatsApp green */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        z-index: 1000;
+        text-decoration: none;
+        /* Remove underline from link */
+    }
+    
+    .whatsapp-fab img {
+        width: 30px;
+        /* Size of the WhatsApp icon */
+        height: 30px;
+        filter: brightness(0) invert(1);
+        /* Makes the icon white */
+    }
+    
+    .whatsapp-fab:hover {
+        background-color: #1DA851;
+        /* Darker green on hover */
+        transform: scale(1.1);
+    }
+    /* --- WhatsApp Floating Button Styles - End --- */
+    /*-----------------------------------------------------------------------END OF HOME PAGE STYLES------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------PRODUCTS PAGE STYLES, battery section---------------------------------------------------------------------------*/
+    /* ----------------------- CARDS FOR Products Styles ----------------------- */
+    /* Container for the overlapping cards */
+    
+    .carousel-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 1200px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10rem;
+    }
+    /* Your custom card style */
+    
+    .custom-card {
+        background-color: #010306;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.4s ease-in-out;
+        cursor: pointer;
+        border: #8163e6 5px solid;
+        /* gap: 1px; */
+    }
+    /* --- Carousel Interaction --- */
+    /* Overlap cards (all except the first one) */
+    
+    .custom-card:not(:first-child) {
+        margin-left: -10px;
+    }
+    /* When hovering over any card... */
+    
+    .custom-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-20px);
+    }
+    /* Move the cards that come AFTER the hovered card to the right */
+    /*
+    .custom-card:hover~.custom-card {
+        transform: translateX(30px);
+    }
+     --- Card Content Styling --- */
+    
+    .custom-card img {
+        width: 100%;
+        height: 180px;
+        /* Fixed height for the image area */
+        object-fit: cover;
+        /* Ensures the image covers the area without distortion */
+    }
+    
+    .card-content {
+        padding: 15px;
+        color: #ffffff;
+    }
+    
+    .card-content h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 1.2rem;
+    }
+    
+    .product-label a {
+        background-color: #e6880c;
+        color: #fff;
+        border-radius: 10%;
+        padding: 12px 79px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 0.9em;
+        text-align: center;
+        flex-grow: 1;
+        text-decoration: none;
+    }
+    
+    @media (max-width: 1024px) {
+        .carousel-container {
+            grid-template-columns: repeat(3, 1fr);
+            /* Change to 3 columns */
+            gap: 1.2rem;
+            /* Slightly smaller gap */
+        }
+        /* KEY ADJUSTMENT 3: Reduce or remove overlap */
+        .custom-card:not(:first-child) {
+            margin-left: -5px;
+            /* Reduce overlap */
+        }
+    }
+    /*
+=================================================================
+= 1. BREAKPOINT: LAPTOPS & LARGE TABLETS (<= 992px)
+=================================================================
+*/
+    
+    @media (max-width: 992px) {
+        /* -- General Spacing & Layout -- */
+        body {
+            padding: 0 1.5rem;
+        }
+        main {
+            padding: 2rem 1.5rem;
+        }
+        /* -- Navigation -- */
+        .nav-links {
+            gap: 2rem;
+        }
+        /* -- Product Card Carousel -- */
+        .carousel-container {
+            justify-content: flex-start;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+        }
+        .custom-card {
+            flex-shrink: 0;
+            transform: none !important;
+            margin-left: 0 !important;
+            scroll-snap-align: start;
+        }
+        .custom-card:not(:first-child) {
+            margin-left: 20px !important;
+        }
+        .custom-card:hover~.custom-card {
+            transform: none !important;
+        }
+        /* -- Typography Adjustments -- */
+        h1,
+        .welcome h1 {
+            font-size: 2.8rem;
+        }
+        h2,
+        .packages h2,
+        .branches h2,
+        .contact-us h2 {
+            font-size: 2.5rem;
+        }
+    }
+    /*
+=================================================================
+= 1. BREAKPOINT: LARGE TABLETS & SMALL LAPTOPS (<= 992px)
+=================================================================
+= - Stacks two-column layouts into a single vertical column.
+= - Adjusts container padding for a slightly more compact view.
+= - Simplifies product card carousel for better usability.
+=================================================================
+*/
+    
+    @media (max-width: 992px) {
+        /* -- General Spacing & Layout -- */
+        body {
+            padding: 0 1.5rem;
+            /* Reduce side padding */
+        }
+        main {
+            padding: 2rem 1.5rem;
+        }
+        /* -- Navigation -- */
+        .nav-links {
+            gap: 2rem;
+            /* Reduce gap between nav items */
+        }
+        /* -- Layout Stacking: Welcome & Branches Sections -- */
+        .welcome-magazine-layout,
+        .branches-content {
+            grid-template-columns: 1fr;
+            /* Change grid from two columns to one */
+            gap: 40px;
+            max-width: 700px;
+            /* Constrain width for better readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Resetting special alignment from desktop view */
+        .welcome-content,
+        .magazine-left-image {
+            align-items: center;
+            text-align: left;
+        }
+        .magazine-image,
+        .welcome-image img {
+            margin-left: 0;
+            /* Reset negative margins and alignment */
+            max-width: 100%;
+        }
+        .welcome-content p {
+            max-width: 100%;
+            text-align: left;
+        }
+        .welcome-image {
+            justify-content: center;
+        }
+        /* -- Product Card Carousel -- */
+        /* Disabling the complex hover overlap effect for touch devices */
+        .carousel-container {
+            justify-content: flex-start;
+            overflow-x: auto;
+            /* Make it a simple scrollable container */
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+        }
+        .custom-card {
+            flex-shrink: 0;
+            transform: none !important;
+            /* Disable all transforms */
+            margin-left: 0 !important;
+            /* Reset overlap margin */
+            scroll-snap-align: start;
+        }
+        .custom-card:not(:first-child) {
+            margin-left: 20px !important;
+        }
+        .custom-card:hover~.custom-card {
+            transform: none !important;
+            /* Disable follow-on hover effect */
+        }
+        /* -- Typography Adjustments -- */
+        h1,
+        .welcome h1 {
+            font-size: 2.8rem;
+        }
+        h2,
+        .packages h2,
+        .branches h2,
+        .contact-us h2 {
+            font-size: 2.5rem;
+        }
+    }
+    /*
+=================================================================
+= 2. BREAKPOINT: TABLETS & LARGE PHONES (<= 768px)
+=================================================================
+= - Implements the hamburger navigation menu.
+= - Hides desktop navigation and displays the hamburger icon.
+= - Reduces slider height and further scales typography.
+=================================================================
+*/
+    
+    @media (max-width: 768px) {
+        /* -- Hamburger Navigation -- */
+        .slider-container {
+            height: 50vh;
+            width: 100%;
+            /* Reduced height for smaller screens */
+        }
+        .hamburger-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 27px;
+            height: 27px;
+            cursor: pointer;
+            position: absolute;
+            top: 40px;
+            right: 25px;
+            z-index: 1001;
+            background: #e6880c;
+            border: none;
+            border-radius: 19%;
+        }
+        .hamburger-menu span,
+        .hamburger-menu span::before,
+        .hamburger-menu span::after {
+            display: block;
+            background: #1a1332;
+            /* Changed to dark purple */
+            height: 2px;
+            width: 100%;
+            border-radius: 3px;
+            position: relative;
+            transition: all 0.35s ease-in-out;
+        }
+        .hamburger-menu span::before,
+        .hamburger-menu span::after {
+            content: "";
+            position: absolute;
+        }
+        .hamburger-menu span::before {
+            transform: translateY(-10px);
+        }
+        .hamburger-menu span::after {
+            transform: translateY(10px);
+        }
+        /* Hide nav links by default */
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            max-width: 320px;
+            height: 100%;
+            background-color: #483D8B;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 100px 30px 30px;
+            gap: 15px;
+            margin: 0;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1000;
+            overflow-y: auto;
+            /* Allow scrolling if menu is long */
+        }
+        /* --- The Magic: Toggle Menu with .nav-open class on <header> --- */
+        header.nav-open .nav-links {
+            transform: translateX(0);
+            /* Slides the menu in */
+        }
+        /* Optional: Prevents body scrolling when nav is open */
+        body:has(header.nav-open) {
+            overflow: hidden;
+        }
+        /* Animate hamburger icon to an "X" when nav is open */
+        header.nav-open .hamburger-menu span {
+            background: transparent;
+            /* Middle bar disappears */
+        }
+        header.nav-open .hamburger-menu span::before {
+            transform: rotate(45deg);
+        }
+        header.nav-open .hamburger-menu span::after {
+            transform: rotate(-45deg);
+        }
+        /* Mobile Dropdown Behavior */
+        .nav-links .dropdown-menu {
+            position: static;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding-left: 15px;
+            min-width: unset;
+        }
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+            /* Show dropdown content statically */
+        }
+        /* -- Header & Slider Adjustments -- */
+        .slider-container {
+            margin: -6rem auto -2rem;
+            max-width: 100%;
+            /* Ensure slider takes full width */
+        }
+        .welcome h1 {
+            margin-top: 0;
+        }
+        /* -- Typography -- */
+        h1,
+        .welcome h1 {
+            font-size: 2.2rem;
+        }
+        h2,
+        .packages h2,
+        .branches h2,
+        .contact-us h2 {
+            font-size: 2rem;
+        }
+        .whatsapp-icon {
+            width: 20px;
+            margin-right: 5px;
+        }
+        footer p {
+            font-size: 1rem;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        .contact-info-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding-left: 20px;
+        }
+        .contact-item a {
+            font-size: 0.9rem;
+        }
+    }
+    /* =============================================
+   WhatsApp Channel Link Styles
+   ============================================= */
+    /* Container for the WhatsApp link item */
+    
+    .whatsapp-link {
+        margin-left: 1.5rem;
+        /* Adds some space from the other nav items */
+    }
+    /* Styling the link itself */
+    
+    .whatsapp-link a {
+        display: flex;
+        /* Aligns icon and text side-by-side */
+        align-items: center;
+        /* Vertically centers the icon and text */
+        gap: 10px;
+        /* Creates space between the icon and the text */
+        background-color: #25D366;
+        ;
+        /* Uses your defined orange color */
+        color: var(--text-light);
+        /* Uses your light text color (white) */
+        font-size: 0.9rem;
+        padding: 4px 9px;
+        /* Generous padding for a button-like feel */
+        border-radius: 25px;
+        /* Creates the pill shape */
+        text-decoration: none;
+    }
+    
+    .contact-item a {
+        font-size: 1rem;
+    }
+    /* The WhatsApp icon image */
+    
+    .whatsapp-icon {
+        width: 20px;
+        /* Icon size */
+        height: 20px;
+        /* Icon size */
+    }
+    /*
+=================================================================
+= 3. BREAKPOINT: MOBILE PHONES (<= 480px)
+=================================================================
+= - Drastically reduces slider height to prevent it dominating the view.
+= - Finalizes typography scaling for optimal readability.
+= - Fine-tunes all spacing for a polished, clean mobile experience.
+=================================================================
+*/
+    
+    @media (max-width: 480px) {
+        /* -- General Spacing -- */
+        body {
+            padding: 0;
+        }
+        main {
+            padding: 1.5rem 1rem;
+        }
+        /* -- Header & Slider -- */
+        .slider-container {
+            height: 50vh;
+            max-height: 231px;
+            width: 100%;
+        }
+        .logo img {
+            max-height: 70px;
+        }
+        /* -- Typography -- */
+        h1,
+        .welcome h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+        h2,
+        .packages h2,
+        .branches h2,
+        .contact-us h2,
+        .products h2 {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+        }
+        /* -- Package Slider -- */
+        .package-slider {
+            gap: 0px;
+            margin-left: 0px;
+            height: 100% 100%;
+            width: 100%;
+        }
+        .package-slider img {
+            width: 100%;
+            height: 100%;
+        }
+        /* -- Branches Section -- */
+        .branches-info ul {
+            margin: 15px 0;
+        }
+        /* -- Contact Section -- */
+        .contact-info-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding-left: 20px;
+        }
+        /* -- Product Cards -- */
+        .custom-card {
+            width: 240px;
+            /* Adjust card size for mobile */
+            height: 320px;
+            /* A simpler clip-path could be used here if needed, but the original should scale okay */
+        }
+        .contact-item a {
+            font-size: 0.9rem;
+        }
+        /* -- Floating Buttons -- */
+        .scroll-indicator-btn,
+        .whatsapp-fab {
+            width: 45px;
+            height: 45px;
+            bottom: 15px;
+        }
+        .scroll-indicator-btn {
+            right: 15px;
+        }
+        .whatsapp-fab {
+            left: 15px;
+        }
+        /* -- Footer -- */
+        footer p {
+            font-size: 14px;
+            text-align: center;
+            padding: 0 1rem;
+        }
+    }
+    /* --- Media Queries for Carousel Container --- */
+    /* For screens up to 1024px (e.g., small laptops, large tablets) */
+    
+    @media (max-width: 1024px) {
+        .carousel-container {
+            grid-template-columns: repeat(3, 1fr);
+            /* Change to 3 columns */
+            gap: 1.2rem;
+            /* Slightly smaller gap */
+        }
+        /* KEY ADJUSTMENT 3: Reduce or remove overlap */
+        .custom-card:not(:first-child) {
+            margin-left: -5px;
+            /* Reduce overlap */
+        }
+    }
+    /* For screens up to 768px (e.g., tablets in portrait) */
+    
+    @media (max-width: 768px) {
+        .carousel-container {
+            grid-template-columns: repeat(2, 1fr);
+            /* Change to 2 columns */
+            gap: 1rem;
+            margin-top: 5rem;
+            /* Reduce top margin on smaller screens */
+        }
+        /* KEY ADJUSTMENT 4: Remove overlap completely */
+        .custom-card:not(:first-child) {
+            margin-left: 0;
+            /* No overlap on 2-column or 1-column layouts */
+        }
+        .custom-card {
+            margin-left: 0 !important;
+            /* Ensure no residual margin-left from other rules */
+        }
+        /* Adjust button padding/size for smaller cards */
+        .product-label a {
+            padding: 10px 20px;
+            font-size: 0.85em;
+            max-width: 160px;
+            /* Adjust max-width for smaller button */
+        }
+        .custom-card img {
+            height: 160px;
+            /* Slightly reduce image height for smaller cards */
+        }
+    }
+    /* For screens up to 480px (e.g., mobile phones) */
+    
+    @media (max-width: 480px) {
+        .carousel-container {
+            grid-template-columns: 1fr;
+            /* Change to 1 column */
+            gap: 0.8rem;
+            /* Smaller gap */
+            margin-top: 3rem;
+            /* Further reduce top margin */
+            padding: 0 10px;
+            /* Less horizontal padding for very small screens */
+            display: flex
+        }
+        .custom-card {
+            margin-left: 0 !important;
+            /* Ensure no overlap */
+            max-width: 350px;
+            /* Cap card width when it's a single column */
+            margin-left: auto;
+            /* Center single card */
+            margin-right: auto;
+            /* Center single card */
+        }
+        .custom-card img {
+            height: 140px;
+            /* Adjust image height for single column cards */
+        }
+        .card-content h4 {
+            font-size: 1.1rem;
+            /* Slightly smaller heading */
+        }
+        .card-content a:first-of-type {
+            font-size: 1rem;
+            /* Slightly smaller price */
+        }
+        .product-label a {
+            padding: 10px 15px;
+            /* Smaller padding for button */
+            font-size: 0.8em;
+            /* Smaller font for button */
+            max-width: 100%;
+            /* Allow button to take full width of card-content */
+        }
+        .parallax {
+            margin: -1rem;
+        }
+    }
